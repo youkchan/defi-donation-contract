@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+comp.js
+centre-tokens/*
+compound-protocol/*
+.env
+!.gitkeep
