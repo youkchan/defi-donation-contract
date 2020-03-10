@@ -53,7 +53,9 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(
           process.env.MNEMONIC,
-          process.env.INFURA_RINKEBY
+          process.env.INFURA_RINKEBY,
+		0,
+		4,
         );
       },
 	//  networkCheckTimeout: 1000000000,
