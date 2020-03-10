@@ -7,15 +7,22 @@
     "test": "test"
   },
   "scripts": {
+	"solhint": "./node_modules/.bin/solhint -f table contracts/**/*.sol",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts-ethereum-package": "^2.4.0",
+    "@openzeppelin/upgrades": "^2.7.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "dotenv": "^8.2.0",
     "truffle-hdwallet-provider": "^1.0.17",
     "truffle-security": "^1.7.1",
     "web3": "^1.2.6"
+  },
+  "devDependencies": {
+    "solhint": "^3.0.0-rc.5"
   }
 }

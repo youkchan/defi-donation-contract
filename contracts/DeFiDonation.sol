@@ -1,23 +1,22 @@
 pragma solidity 0.5.16;
-import "../centre-tokens/contracts/FiatTokenV1.sol";
-import "../compound-protocol/contracts/CErc20.sol";
 import "./DonationAccountFactory.sol";
+import "./ExternalContractInterface.sol";
 
 contract DeFiDonation {
-  FiatTokenV1 private usdc;
-  CErc20 private cusdc;
+  USDCInterface private usdc;
+  CTokenInterface private cusdc;
   mapping(address => address) private donationAccounts;
   DonationAccountFactory private daf;
   
   constructor(address _usdcAddress, address _cusdcAddress, address _dafAddress) public {
-	  usdc = FiatTokenV1(_usdcAddress);
-	  cusdc = CErc20(_cusdcAddress);
+	  usdc = USDCInterface(_usdcAddress);
+	  cusdc = CTokenInterface(_cusdcAddress);
 	  daf = DonationAccountFactory(_dafAddress);
   }
 
   function createDonationAccount() public {
 	  require(donationAccounts[msg.sender] == address(0));
-	  address donationAccount = daf.createInstance(address(usdc), address(cusdc));
+	  address donationAccount = daf.createInstance(address(usdc), address(cusdc), msg.sender);
 	  donationAccounts[msg.sender] = donationAccount;
   }
 
